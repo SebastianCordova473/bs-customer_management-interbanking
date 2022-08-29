@@ -1,5 +1,6 @@
 package pe.com.interbanking.customer.infrastructure.adapters.input.rest;
 
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,21 +21,23 @@ import java.util.UUID;
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class ProductRestAdapter {
-    private final CreateCustomerUseCase createCustomerUseCase;
+
+
+    private final CreateCustomerUseCase customerService;
     private final GetCustomerUseCase getCustomerUseCase;
     private final CustomerRestMapper customerRestMapper;
 
     @PostMapping("/customer")
     public ResponseEntity<CustomerCreateResponse> createProduct(@RequestBody @Valid CustomerCreateRequest customerCreateRequest){
         Customer customer = customerRestMapper.toCustomer(customerCreateRequest);
-        customer = createCustomerUseCase.createProduct(customer);
+        customer = customerService.createProduct(customer);
         return new ResponseEntity<>(customerRestMapper.toCustomerCreateResponse(customer), HttpStatus.OK);
-    };
+    }
 
     @GetMapping("/customers/{id}")
     public ResponseEntity<CustomerQueryResponse> getCustomer(@PathVariable UUID id){
         Customer customer = getCustomerUseCase.getProductById(id);
         return  new ResponseEntity<>(customerRestMapper.toCustomerQueryResponse(customer), HttpStatus.OK);
-    };
+    }
 
 }

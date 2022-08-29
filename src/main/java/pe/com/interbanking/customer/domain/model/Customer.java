@@ -8,7 +8,9 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Customer {
+
     private UUID id;
     private String fistName;
     private String lastName;

@@ -2,12 +2,13 @@ package pe.com.interbanking.customer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import pe.com.interbanking.customer.application.ports.input.CreateCustomerUseCase;
+import pe.com.interbanking.customer.infrastructure.adapters.input.rest.ProductRestAdapter;
+import pe.com.interbanking.customer.infrastructure.adapters.ouput.persistence.mapper.CustomerPersistenceMapper;
 
 @SpringBootApplication
-@ComponentScan("pe.com.interbanking.customer.infrastructure.adapters.ouput.persistence.mapper")
+@ComponentScan(basePackageClasses = {CustomerPersistenceMapper.class, ProductRestAdapter.class, CreateCustomerUseCase.class})
 public class BsCustomerManagementInterbankingApplication {
 
 	public static void main(String[] args) {

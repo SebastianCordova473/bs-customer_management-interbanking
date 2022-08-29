@@ -3,13 +3,14 @@ package pe.com.interbanking.customer.infrastructure.adapters.input.rest.data.req
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+
 
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class CustomerCreateRequest {
     @NotEmpty(message = "firstName may not be empty")
     private String fistName;

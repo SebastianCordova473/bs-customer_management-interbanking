@@ -1,6 +1,7 @@
 package pe.com.interbanking.customer.infrastructure.adapters.ouput.persistence;
 
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.Mapper;
 import org.springframework.stereotype.Service;
 import pe.com.interbanking.customer.application.ports.output.CustomerOutputPort;
 import pe.com.interbanking.customer.domain.model.Customer;
@@ -13,6 +14,8 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 import java.util.UUID;
 
+
+@Service
 @RequiredArgsConstructor
 public class CustomerPersistenceAdapter implements CustomerOutputPort {
 
@@ -21,9 +24,9 @@ public class CustomerPersistenceAdapter implements CustomerOutputPort {
 
     @Override
     public Customer saveCustomer(Customer customer) {
-        CustomerEntity customerEntity  = customerPersistenceMapper.toProductEntity(customer);
+        CustomerEntity customerEntity  = customerPersistenceMapper.toCustomerEntity(customer);
         customerEntity = customerRepository.save(customerEntity);
-        return customerPersistenceMapper.toProduct(customerEntity);
+        return customerPersistenceMapper.toCustomer(customerEntity);
     }
 
     @Override
@@ -32,7 +35,7 @@ public class CustomerPersistenceAdapter implements CustomerOutputPort {
         if(customerEntity.isEmpty()){
            return  Optional.empty();
         }
-        Customer customer =  customerPersistenceMapper.toProduct(customerEntity.get());
+        Customer customer =  customerPersistenceMapper.toCustomer(customerEntity.get());
         return Optional.of(customer);
     }
 }

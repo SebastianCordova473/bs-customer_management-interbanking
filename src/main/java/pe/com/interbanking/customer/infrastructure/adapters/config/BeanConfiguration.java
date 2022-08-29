@@ -1,11 +1,8 @@
 package pe.com.interbanking.customer.infrastructure.adapters.config;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 import pe.com.interbanking.customer.domain.service.CustomerService;
 import pe.com.interbanking.customer.infrastructure.adapters.ouput.eventpublisher.CustomerEventPublisherAdapter;
 import pe.com.interbanking.customer.infrastructure.adapters.ouput.persistence.CustomerPersistenceAdapter;

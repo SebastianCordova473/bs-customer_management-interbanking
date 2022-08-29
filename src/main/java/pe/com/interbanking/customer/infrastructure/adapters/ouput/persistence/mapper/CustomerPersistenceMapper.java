@@ -7,6 +7,6 @@ import pe.com.interbanking.customer.infrastructure.adapters.ouput.persistence.en
 
 @Mapper
 public interface CustomerPersistenceMapper {
-    CustomerEntity toProductEntity(Customer customer);
-    Customer toProduct(CustomerEntity customerEntity);
+    CustomerEntity toCustomerEntity(Customer customer);
+    Customer toCustomer(CustomerEntity customerEntity);
 }
