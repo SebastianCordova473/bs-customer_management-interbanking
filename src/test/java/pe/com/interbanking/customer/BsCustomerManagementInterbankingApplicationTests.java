@@ -28,7 +28,7 @@ class BsCustomerManagementInterbankingApplicationTests {
 	private MockMvc mockMvc;
     @MockBean
 	CustomerService customerService;
-  /*
+
 	@Test
 	void createCustomer_PJ1Sebastian() throws Exception {
 
@@ -56,6 +56,6 @@ class BsCustomerManagementInterbankingApplicationTests {
 	   }catch (Exception ex){
          throw  new RuntimeException(ex);
 	   }
-	}*/
+	}
 
 }

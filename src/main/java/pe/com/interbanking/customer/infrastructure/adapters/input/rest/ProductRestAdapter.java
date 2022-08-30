@@ -23,15 +23,15 @@ import java.util.UUID;
 public class ProductRestAdapter {
 
 
-    private final CreateCustomerUseCase customerService;
+    private final CreateCustomerUseCase createCustomerUseCase;
     private final GetCustomerUseCase getCustomerUseCase;
     private final CustomerRestMapper customerRestMapper;
 
     @PostMapping("/customer")
     public ResponseEntity<CustomerCreateResponse> createProduct(@RequestBody @Valid CustomerCreateRequest customerCreateRequest){
         Customer customer = customerRestMapper.toCustomer(customerCreateRequest);
-        customer = customerService.createProduct(customer);
-        return new ResponseEntity<>(customerRestMapper.toCustomerCreateResponse(customer), HttpStatus.OK);
+        customer = createCustomerUseCase.createProduct(customer);
+        return new ResponseEntity<>(customerRestMapper.toCustomerCreateResponse(customer), HttpStatus.CREATED);
     }
 
     @GetMapping("/customers/{id}")
